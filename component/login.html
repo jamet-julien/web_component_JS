@@ -1,27 +1,33 @@
 <html>
 <!--
-  _   _ _____ __  __ _
- | | | |_   _|  \/  | |
- | |_| | | | | |\/| | |
- |  _  | | | | |  | | |___
- |_| |_| |_| |_|  |_|_____|
+VUE
 -->
   <template>
+    <!--
+      style
+    -->
+    <style>
+      label{
+        color : red;
+      }
+    </style>
+
+    <!--
+      structure
+    -->
+    
     <form>
-      <label>Login</label>
+      <label class="color-label">Login</label>
       <input type="login" name="login"/>
-      <label>Password</label>
+      <label class="color-label">Password</label>
       <input type="password" name="password"/>
       <button>envoyer</button>
     </form>
+
   </template>
 
 <!--
-  ____   ____ ____  ___ ____ _____
- / ___| / ___|  _ \|_ _|  _ \_   _|
- \___ \| |   | |_) || || |_) || |
-  ___) | |___|  _ < | ||  __/ | |
- |____/ \____|_| \_\___|_|    |_|
+CONTROLEUR
 -->
   <script>
 
@@ -33,10 +39,12 @@
           $template          = $domCurrent.querySelector('template');
 
       oLoginPrototype.createdCallback = function initModule() {
+
         var $clone  = $domRoot.importNode( $template.content, true),
-            $shadow;
-            
-        this.appendChild( $clone);
+            $shadow = this.createShadowRoot();
+
+        $shadow.appendChild( $clone);
+
       };
 
       document.registerElement(
