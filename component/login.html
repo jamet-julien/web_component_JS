@@ -1,0 +1,55 @@
+<html>
+<!--
+  _   _ _____ __  __ _
+ | | | |_   _|  \/  | |
+ | |_| | | | | |\/| | |
+ |  _  | | | | |  | | |___
+ |_| |_| |_| |_|  |_|_____|
+-->
+  <template>
+    <form>
+      <label>Login</label>
+      <input type="login" name="login"/>
+      <label>Password</label>
+      <input type="password" name="password"/>
+      <button>envoyer</button>
+    </form>
+  </template>
+
+<!--
+  ____   ____ ____  ___ ____ _____
+ / ___| / ___|  _ \|_ _|  _ \_   _|
+ \___ \| |   | |_) || || |_) || |
+  ___) | |___|  _ < | ||  __/ | |
+ |____/ \____|_| \_\___|_|    |_|
+-->
+  <script>
+
+    ( function(){
+
+      var $domRoot           = document,
+          $domCurrent        = $domRoot.currentScript.ownerDocument,
+          oLoginPrototype    = Object.create( HTMLElement.prototype),
+          $template          = $domCurrent.querySelector('template');
+
+      oLoginPrototype.createdCallback = function initModule() {
+        
+        var $clone  = $domRoot.importNode( $template, true),
+            $shadow = this.createShadowRoot();
+
+        $shadow.appendChild( $clone);
+
+        console.log( 'module login OK');
+      };
+
+      document.registerElement(
+                                'login-module',
+                                {
+                                  prototype: oLoginPrototype
+                                }
+                              );
+    })();
+
+
+  </script>
+</html>
