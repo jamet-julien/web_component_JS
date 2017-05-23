@@ -1,60 +1,68 @@
-<html>
 <!--
-VUE
+ __     ___   _ _____
+ \ \   / / | | | ____|
+  \ \ / /| | | |  _|
+   \ V / | |_| | |___
+    \_/   \___/|_____|
 -->
-  <template>
-    <!--
-      style
-    -->
-    <style>
-      label{
-        color : red;
-      }
-    </style>
+<template>
+  <!--
+    style
+  -->
+  <style>
+    label{
+      color : red;
+    }
+  </style>
 
-    <!--
-      structure
-    -->
-    
-    <form>
-      <label class="color-label">Login</label>
-      <input type="login" name="login"/>
-      <label class="color-label">Password</label>
-      <input type="password" name="password"/>
-      <button>envoyer</button>
-    </form>
+  <!--
+    structure
+  -->
 
-  </template>
+  <form>
+    <label class="color-label">Login</label>
+    <input type="login" name="login"/>
+    <label class="color-label">Password</label>
+    <input type="password" name="password"/>
+    <button>envoyer</button>
+  </form>
+
+</template>
 
 <!--
-CONTROLEUR
+   ____ ___  _   _ _____ ____   ___  _     _____ _   _ ____
+  / ___/ _ \| \ | |_   _|  _ \ / _ \| |   | ____| | | |  _ \
+ | |  | | | |  \| | | | | |_) | | | | |   |  _| | | | | |_) |
+ | |__| |_| | |\  | | | |  _ <| |_| | |___| |___| |_| |  _ <
+  \____\___/|_| \_| |_| |_| \_\\___/|_____|_____|\___/|_| \_\
 -->
-  <script>
+<script>
 
-    ( function(){
+  ( function(){
 
-      var $domRoot           = document,
-          $domCurrent        = $domRoot.currentScript.ownerDocument,
-          oLoginPrototype    = Object.create( HTMLElement.prototype),
-          $template          = $domCurrent.querySelector('template');
+    var $domRoot           = document,
+        $domCurrent        = $domRoot.currentScript.ownerDocument,
+        oLoginPrototype    = Object.create( HTMLElement.prototype),
+        $template          = $domCurrent.querySelector( 'template');
 
-      oLoginPrototype.createdCallback = function initModule() {
+    oLoginPrototype.createdCallback = function initModule() {
 
-        var $clone  = $domRoot.importNode( $template.content, true),
-            $shadow = this.createShadowRoot();
-
-        $shadow.appendChild( $clone);
-
-      };
-
-      document.registerElement(
-                                'login-module',
-                                {
-                                  prototype: oLoginPrototype
-                                }
-                              );
-    })();
+      var $clone  = $template.content.cloneNode( true),// $domRoot.importNode( $template.content, true)
+          $shadow = this.createShadowRoot();
 
 
-  </script>
-</html>
+      console.log( $domCurrent.URL, 'Load');
+      $shadow.appendChild( $clone);
+
+    };
+
+    document.registerElement(
+                              'login-module',
+                              {
+                                prototype: oLoginPrototype
+                              }
+                            );
+  })();
+
+
+</script>
