@@ -10,3 +10,5 @@ sans Librairie tiers.
 - Custom_Elements : https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements
 - createShadowRoot : https://developer.mozilla.org/en-US/docs/Web/API/Element/createShadowRoot
 - attachShadow : https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow
+- slot : https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+- dispatchEvent : https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent

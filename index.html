@@ -28,9 +28,24 @@
 
   <body>
 
-      <login-module></login-module>
-      <label>Exterieur</label>
+      <login-module>
+        <span slot="name">Julien</span>
+      </login-module><br/>
+
+      <label>label</label><br/><br/>
       <login-module></login-module>
 
+
+      <script>
+      ( function(){
+
+        document.addEventListener('send-log', function (event) {
+            console.log('coucou');
+        }, true);
+
+      })();
+
+
+      </script>
   </body>
 </html>

@@ -20,6 +20,7 @@
   -->
 
   <form>
+    Bonjour <slot name="name">anonyme</slot><br/>
     <label class="color-label">Login</label>
     <input type="login" name="login"/>
     <label class="color-label">Password</label>
@@ -48,8 +49,14 @@
     oLoginPrototype.createdCallback = function initModule() {
 
       var $clone  = $template.content.cloneNode( true),// $domRoot.importNode( $template.content, true)
-          $shadow = this.createShadowRoot();
+          $shadow = this.attachShadow( { mode: 'open'});
 
+      $clone.querySelector('button').addEventListener( 'click', function(e) {
+
+        e.preventDefault();
+        $domRoot.dispatchEvent( new Event('send-log'));
+
+      });
 
       console.log( $domCurrent.URL, 'Load');
       $shadow.appendChild( $clone);
