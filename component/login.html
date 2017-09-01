@@ -48,13 +48,21 @@
 
     oLoginPrototype.createdCallback = function initModule() {
 
-      var $clone  = $template.content.cloneNode( true),// $domRoot.importNode( $template.content, true)
-          $shadow = this.attachShadow( { mode: 'open'});
+      var $clone       = $template.content.cloneNode( true),// $domRoot.importNode( $template.content, true)
+          $shadow      = this.attachShadow( { mode: 'open'}),
+          $inputLogin  = $clone.querySelector('input[name="login"]'),
+          $inputMdp    = $clone.querySelector('input[name="password"]');
 
       $clone.querySelector('button').addEventListener( 'click', function(e) {
-
+        var oEvent = new Event('send-log');
         e.preventDefault();
-        $domRoot.dispatchEvent( new Event('send-log'));
+
+        oEvent.value = {
+            login    : $inputLogin.value,
+            password : $inputMdp.value
+        };
+
+        $domRoot.dispatchEvent( oEvent);
 
       });
 
