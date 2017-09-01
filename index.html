@@ -39,8 +39,12 @@
       <script>
       ( function(){
 
-        document.addEventListener('send-log', function (event) {
-            console.log('coucou', event.value);
+        document.querySelectorAll('login-module')[0].addEventListener( 'send-log', function (event) {
+            console.log('premier', event.value);
+        }, true);
+
+        document.querySelectorAll('login-module')[1].addEventListener( 'send-log', function (event) {
+            console.log('second', event.value);
         }, true);
 
       })();

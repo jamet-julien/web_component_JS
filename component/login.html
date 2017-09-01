@@ -51,10 +51,12 @@
       var $clone       = $template.content.cloneNode( true),// $domRoot.importNode( $template.content, true)
           $shadow      = this.attachShadow( { mode: 'open'}),
           $inputLogin  = $clone.querySelector('input[name="login"]'),
-          $inputMdp    = $clone.querySelector('input[name="password"]');
+          $inputMdp    = $clone.querySelector('input[name="password"]'),
+          self         = this;
 
       $clone.querySelector('button').addEventListener( 'click', function(e) {
         var oEvent = new Event('send-log');
+
         e.preventDefault();
 
         oEvent.value = {
@@ -62,11 +64,10 @@
             password : $inputMdp.value
         };
 
-        $domRoot.dispatchEvent( oEvent);
-
+        self.dispatchEvent( oEvent);
+        
       });
 
-      console.log( $domCurrent.URL, 'Load');
       $shadow.appendChild( $clone);
 
     };
